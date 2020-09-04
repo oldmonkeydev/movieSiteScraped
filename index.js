@@ -2,7 +2,10 @@ const express = require('express');
 
 const scraper = require('./scraper');
 
+const cors = require('cors');
+
 const app = express();
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.json({
@@ -27,17 +30,17 @@ app.get('/movie/:link', (req, res) => {
         res.json(movie);
     })
 });
+app.get('/home/', (req, res) => {
+    scraper.getHome()
+    .then(home => {
+        res.json(home);
+    })
+});
 
 const port = process.env.port || 3000;
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
 
-module.exports = (req, res) => {
-    res.json({
-      body: req.body,
-      query: req.query,
-      cookies: req.cookies,
-    })
-  }
+
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="styles/movieStyle.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" > 
+    <title>Movie</title>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+            <a class="navbar-brand" href="#">Peliculas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link" href="/frontend/home.html">Inicio</a>
+                <a class="nav-link" href="/frontend/index.html">Buscar</a>
+                <a class="nav-link" href="#">Ajustes</a>
+                <a class="nav-link" href="#">Informacion</a>
+              </div>
+            </div>
+        </nav>
+    </header>
+    <div class="banner"> 
+        <div class="content">
+            <div id="titlendescription" class="info"></div>
+            <a href="#" class="play" onclick="toggle();"><img src="styles/images/play.png">Ver Pelicula</a>
+            <div class="slide"></div>
+                <ul class="sci">
+                    <li><a href="#"><img src="styles/images/facebook.png"></a></li>
+                    <li><a href="#"><img src="styles/images/instagram.png"></a></li>
+                    <li><a href="#"><img src="styles/images/twitter.png"></a></li>
+                </ul>
+             </div>
+    </div>
+    <div class="trailer">
+        <img src="styles/images/close.png" class="close" onclick="toggle();">
+    </div>
+    <script type="text/javascript" src="movie.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function toggle(){
+          var trailer = document.querySelector('.trailer');
+          trailer.classList.toggle('active');
+}
+    </script>
+</body>
+</html>

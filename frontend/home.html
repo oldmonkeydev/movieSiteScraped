@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/homeStyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" > 
+    <title>Home</title>
+</head>
+<body id="body_id">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <a class="navbar-brand" href="#">Peliculas</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" href="#">Inicio<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/frontend/index.html">Buscar</a>
+            <a class="nav-link" href="#">Ajustes</a>
+            <a class="nav-link" href="#">Informacion</a>
+          </div>
+        </div>
+    </nav>
+    <main class="content">
+        <div class="container movie-details">
+            <div class="row">
+                <div class="col-md-6 left-box" id="left-box"></div>
+                <div class="col-md-6 right-box text-center" id="right-box"></div>
+            </div>
+        </div>
+        <div class="container series-section">
+            <h3>Peliculas Nuevas</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-6" id="movie1"></div>
+                    <div class="col-6" id="movie2"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-6" id="movie3"></div>
+                    <div class="col-6" id="movie4"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-6" id="movie5"></div>
+                    <div class="col-6" id="movie6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+<script src="home.js" type="text/javascript"></script>
+<script src="/node_modules/jquery/dist/jquery.js"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="navbar.js"></script>
+</body>
+</html>

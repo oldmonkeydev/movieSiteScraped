@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-const { text } = require('express');
+const { text, response } = require('express');
+
+const baseUrl = 'https://www.peliculasflv.to/';
 
 const url = 'https://www.peliculasflv.to/buscar/';
 
@@ -8,9 +10,82 @@ const urlMovie = 'https://www.peliculasflv.to/pelicula/';
 
 const tmp = '/';
 
+const flag = false;
+
 const movieCache = {};
 
 const searchCache = {};
+
+
+function getHome(){
+    return fetch(`${baseUrl}`)
+    .then(response => response.text()
+    .then(body => {
+        var home = [];
+        const $ = cheerio.load(body);
+
+        const background = $('.slider-item-wrapper').attr('style').substr(17).slice(0,-36);;
+
+        const reff = $("#main-slider div .swiper-wrapper  div div .slider-item-content div .buttons a").attr('href').substr(37);
+
+        const poster = $('#main-slider div .swiper-wrapper  div div div.slider-item-poster div a img').attr('src');
+
+        const title = reff.substr(0,reff.length - 1);
+
+        const description = $("#main-slider div .swiper-wrapper .swiper-slide.swiper-slide div div .slider-item-content div .description").text().split(/\r?\n/)[2].trim()
+
+        const time = $("#main-slider div .swiper-wrapper  div div .slider-item-content div .extra p:nth-child(1)").text().substr(60);
+
+        const firstMovieImg = $("#home .list.ls .content-list div div :nth-child(1) a .content .poster img").attr('src');
+
+        const firstMovieRef = $("#home .list.ls .content-list div div :nth-child(1) a").attr('href').substr(37);
+        
+        const secondMovieImg = $("#home .list.ls .content-list div div :nth-child(2) a .content .poster img").attr('src');
+
+        const secondMovieRef = $("#home .list.ls .content-list div div :nth-child(2) a").attr('href').substr(37);
+
+        const thirdMovieImg = $("#home .list.ls .content-list div div :nth-child(3) a .content .poster img").attr('src');
+
+        const thisrdMovieRef = $("#home .list.ls .content-list div div :nth-child(3) a").attr('href').substr(37);
+
+        const fourthMovieImg = $("#home .list.ls .content-list div div :nth-child(4) a .content .poster img").attr('src');
+
+        const fourthMovieRef = $("#home .list.ls .content-list div div :nth-child(4) a").attr('href').substr(37);
+
+        const fivethMovieImg = $("#home .list.ls .content-list div div :nth-child(5) a .content .poster img").attr('src');
+
+        const fivethMovieRef = $("#home .list.ls .content-list div div :nth-child(5) a").attr('href').substr(37);
+
+        const sixthMovieImg = $("#home .list.ls .content-list div div :nth-child(6) a .content .poster img").attr('src');
+
+        const sixthMovieRef = $("#home .list.ls .content-list div div :nth-child(6) a").attr('href').substr(37);
+
+        home = {
+            background : background,
+            reff : reff,
+            poster : poster,
+            title : title,
+            description : description,
+            time : time,
+            firstMovieImg : firstMovieImg,
+            firstMovieRef : firstMovieRef,
+            secondMovieImg : secondMovieImg,
+            secondMovieRef : secondMovieRef,
+            thirdMovieImg : thirdMovieImg,
+            thisrdMovieRef : thisrdMovieRef,
+            fourthMovieImg : fourthMovieImg,
+            fourthMovieRef : fourthMovieRef,
+            fivethMovieImg : fivethMovieImg,
+            fivethMovieRef : fivethMovieRef,
+            sixthMovieImg : sixthMovieImg,
+            sixthMovieRef : sixthMovieRef
+
+        }
+        console.log(home);
+        return home;
+
+    }));
+}
 
 function searchMovies(searchTerm){
     if(searchCache[searchTerm]){
@@ -116,11 +191,13 @@ function getMovie(link){
         return movie;
     })
 }
+//getHome();
 //getMovie('the-speed-cubers/');
 
 
 
 module.exports = {
     searchMovies,
-    getMovie
+    getMovie,
+    getHome
 };
